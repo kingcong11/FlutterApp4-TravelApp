@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CarouselItem extends StatelessWidget {
+class HotelCarouselItem extends StatelessWidget {
+
   final int index;
-  CarouselItem(this.index);
+  HotelCarouselItem(this.index);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.orange,
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
-      width: 220,
+      width: 260,
       child: LayoutBuilder(
         builder: (_, constraints) => Stack(
           alignment: Alignment.topCenter,
@@ -32,7 +32,7 @@ class CarouselItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '23 Activities',
+                        'Hotel Name',
                         style: TextStyle(
                           fontSize: 22.0,
                           fontWeight: FontWeight.bold,
@@ -40,9 +40,11 @@ class CarouselItem extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Sample Destination description lorem ipsum.',
+                        'Address',
                         style: TextStyle(color: Colors.grey),
                       ),
+                      SizedBox(height: 3.0),
+                      Text('\$ 89.99 / Night'),
                     ],
                   ),
                 ),
@@ -63,19 +65,17 @@ class CarouselItem extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  Hero(
-                    tag: index,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image.asset(
-                        'assets/images/destination$index.jpg',
-                        height: constraints.maxWidth * 0.95,
-                        width: constraints.maxWidth * 0.95,
-                        fit: BoxFit.cover,
-                      ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: Image.asset(
+                      'assets/images/hotel$index.jpg',
+                      height: constraints.maxWidth * 0.95,
+                      width: constraints.maxWidth * 0.95,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Container(
+                    // this is the overlay
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
                       gradient: LinearGradient(
@@ -86,37 +86,6 @@ class CarouselItem extends StatelessWidget {
                         begin: Alignment.center,
                         end: Alignment.bottomCenter,
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 10.0,
-                    bottom: 10.0,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Post Title',
-                          style: TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              FontAwesomeIcons.locationArrow,
-                              size: 10.0,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 5.0),
-                            Text(
-                              'Location',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      ],
                     ),
                   ),
                 ],

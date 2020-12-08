@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/screens/destination_screen.dart';
 
 /* Widgets */
-import '../widgets/carousel_item.dart';
+import '../widgets/hotel_carousel_item.dart';
 
-class SelectionCarousel extends StatelessWidget {
+
+class HotelCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +15,7 @@ class SelectionCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Top Destinations',
+                'Exclusive Hotels',
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
@@ -44,20 +44,10 @@ class SelectionCarousel extends StatelessWidget {
             //maincarousel container
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              itemCount: 4,
+              itemCount: 3,
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
-                return GestureDetector(
-                  child: CarouselItem(index),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => DestinationScreen(),
-                        settings: RouteSettings(arguments: index),
-                      ),
-                    );
-                  },
-                );
+                return HotelCarouselItem(index);
               },
             ),
           ),

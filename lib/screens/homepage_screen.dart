@@ -5,6 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /* Widgets */
 import '../widgets/selection_carousel.dart';
+import '../widgets/hotels_carousel.dart';
+
 
 class HomePageScreen extends StatefulWidget {
   /* Properties */
@@ -65,38 +67,44 @@ class _HomePageScreenState extends State<HomePageScreen> {
     final mainContentSize = _computeMainContentSize(_mediaQuery);
 
     return SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Text(
-                'What would you like to find?',
-                style: TextStyle(
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.bold,
-                ),
+      child: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Text(
+              'What would you like to find?',
+              style: TextStyle(
+                fontSize: 26.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: _icons
-                    .asMap()
-                    .entries
-                    .map((e) => _iconBuilder(e.key))
-                    .toList(),
-              ),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: _icons
+                  .asMap()
+                  .entries
+                  .map((e) => _iconBuilder(e.key))
+                  .toList(),
             ),
-            SizedBox(height: 20),
-            Container(
-              height: mainContentSize * .45,
-              child: SelectionCarousel(),
-            )
-          ],
-        ),
-      );
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: mainContentSize * .45,
+            child: SelectionCarousel(),
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: mainContentSize * .5,
+            // color: Colors.lightBlue,
+            child: HotelCarousel(),
+          ),
+        ],
+      ),
+    );
   }
 }
