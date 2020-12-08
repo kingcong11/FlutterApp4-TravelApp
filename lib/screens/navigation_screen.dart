@@ -23,27 +23,29 @@ class _NavigationSceenState extends State<NavigationSceen> {
     return OpenContainer(
       closedColor: Theme.of(context).primaryColor,
       openColor: Colors.white,
-      closedShape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      closedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       closedElevation: 4,
       transitionDuration: Duration(milliseconds: 500),
       closedBuilder: (ctx, action) {
-        return FloatingActionButton(
-          elevation: 0,
-          backgroundColor: (_isAdding)
-              ? Theme.of(context).primaryColor.withOpacity(0.2)
-              : Theme.of(context).primaryColor,
-          foregroundColor: (_isAdding) ? Theme.of(context).primaryColor : Colors.white,
-          child: const Icon(
-            MdiIcons.mapMarkerCheck,
-            size: 30.0,
+        return Builder(
+          builder: (ctx) => FloatingActionButton(
+            elevation: 0,
+            backgroundColor: (_isAdding)
+                ? Theme.of(context).primaryColor.withOpacity(0.2)
+                : Theme.of(context).primaryColor,
+            foregroundColor:
+                (_isAdding) ? Theme.of(context).primaryColor : Colors.white,
+            child: const Icon(
+              MdiIcons.mapMarkerCheck,
+              size: 30.0,
+            ),
+            onPressed: () {
+              // setState(() {
+              //   _isAdding = true;
+              // });
+              // action();
+            },
           ),
-          onPressed: () {
-            setState(() {
-              _isAdding = true;
-            });
-            action();
-          },
         );
       },
       onClosed: (_) {
@@ -57,6 +59,7 @@ class _NavigationSceenState extends State<NavigationSceen> {
 
   @override
   Widget build(BuildContext context) {
+    ScrollController controller = ScrollController();
     return Scaffold(
       body: ScrollNavigation(
         activeColor: Theme.of(context).primaryColor,
@@ -64,7 +67,21 @@ class _NavigationSceenState extends State<NavigationSceen> {
         navItemIconSize: 30,
         pages: [
           HomePageScreen(),
-          MyDestinationsScreen(),
+          Screen(
+            height: 56.0,
+            elevation: 0.0,
+            centerTitle: false,
+            title: Text(
+              'My Trips',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            backgroundColor: Color(0xFFF3F5F7),
+            controllerToHideAppBar: controller,
+            body: MyDestinationsScreen(controller: controller),
+          ),
         ],
         navItems: [
           ScrollNavigationItem(icon: Icon(MdiIcons.homeVariantOutline)),

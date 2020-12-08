@@ -28,6 +28,10 @@
 	<string>We need your permission to take pictures from your phone</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Enable microphone access to play audio</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to access your location to post destinations</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need to access your location to post destinations</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

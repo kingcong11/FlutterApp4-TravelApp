@@ -14,17 +14,19 @@ class Coordinates{
 class Destination {
   final String id;
   final String title;
+  final String description;
   final String city;
   final String address;
   final Coordinates location;
-  final File imageUrl;
+  final File image;
 
   Destination({
     @required this.id,
     @required this.title,
+    @required this.description,
     @required this.city,
     @required this.address,
     @required this.location,
-    @required this.imageUrl,
+    @required this.image,
   });
 }

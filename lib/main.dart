@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 /* Packages */
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +13,6 @@ import './screens/my_destinations_screen.dart';
 import './screens/homepage_screen.dart';
 import './screens/add_destination_screen.dart';
 
-
-
 void main() {
   runApp(MyApp());
 }
@@ -20,6 +20,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => Destinations()),

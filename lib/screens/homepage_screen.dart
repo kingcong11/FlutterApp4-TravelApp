@@ -61,7 +61,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     /* Properties */
     final _mediaQuery = MediaQuery.of(context);
-    final _deviceSize = _mediaQuery.size;
+    // final _deviceSize = _mediaQuery.size;
     final mainContentSize = _computeMainContentSize(_mediaQuery);
 
     return SafeArea(
